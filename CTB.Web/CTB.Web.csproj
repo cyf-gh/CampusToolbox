@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\Utils\**" />
+    <Content Remove="Views\Utils\**" />
+    <EmbeddedResource Remove="Views\Utils\**" />
+    <None Remove="Views\Utils\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="2.8.391" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CTB.DominModel\CTB.DomainModel.csproj" />
+    <ProjectReference Include="..\CTB.HHI.Factory\CTB.Factory.csproj" />
+  </ItemGroup>
+
+</Project>

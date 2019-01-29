@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewBag.Title</title>
+
+    <environment include="Development">
+        <link asp-href-include="css/*" asp-href-exclude="~/css/all.min.css" rel="stylesheet" />
+    </environment>
+    <environment exclude="Development">
+        <link asp-href-include="css/all.min.css" rel="stylesheet" />
+    </environment>
+    <script src="~/js/all.min.js"></script>
+    <script src="~/js/part.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CampusToolbox</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="dropdown-divider"></div>
+            <div class="form-row" style="padding-left:1rem">
+                <div class="col-auto">
+                    <input class="form-control" type="search" placeholder="(=￣ω￣=)" aria-label="(=￣ω￣=)">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-outline-success" type="submit">搜索</button>
+                </div>
+            </div>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        小工具
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" asp-area="" asp-controller="Utils_HHI" asp-action="Index">快乐交作业</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item disabled" href="#">敬请期待</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
