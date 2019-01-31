@@ -18,8 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CTB.DominModel\CTB.DomainModel.csproj" />
-    <ProjectReference Include="..\CTB.HHI.Factory\CTB.Factory.csproj" />
+    <ProjectReference Include="..\CTB.Service\CTB.Service.csproj" />
   </ItemGroup>
 
 </Project>

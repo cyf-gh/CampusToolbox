@@ -5,12 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CTB.DominModel\CTB.DomainModel.csproj" />
+    <ProjectReference Include="..\CTB.Model\CTB.Model.csproj" />
+    <ProjectReference Include="..\MockModels\Mock.csproj" />
     <ProjectReference Include="..\stLib.CS\stLib.CS.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="System\" />
   </ItemGroup>
 
 </Project>

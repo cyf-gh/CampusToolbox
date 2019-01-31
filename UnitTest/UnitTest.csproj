@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CTB.DominModel\CTB.DomainModel.csproj" />
-    <ProjectReference Include="..\CTB.HHI.Factory\CTB.Factory.csproj" />
+    <ProjectReference Include="..\CTB.Model\CTB.Model.csproj" />
+    <ProjectReference Include="..\CTB.Service\CTB.Service.csproj" />
     <ProjectReference Include="..\stLib.CS\stLib.CS.csproj" />
   </ItemGroup>
 

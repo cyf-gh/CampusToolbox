@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using CTB.Service.HHI;
+using CTB.Service.NavBar;
 
 namespace CTB.Web {
     public class Startup {
@@ -25,8 +27,10 @@ namespace CTB.Web {
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             } );
-
             services.AddMvc().SetCompatibilityVersion( CompatibilityVersion.Version_2_1 );
+            
+            services.AddSingleton<INavBarService, NavBarServiceImpl>();
+            services.AddTransient<IHHIService, HHIServiceImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

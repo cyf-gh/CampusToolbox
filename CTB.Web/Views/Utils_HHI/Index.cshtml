@@ -1,8 +1,8 @@
 ﻿@{ ViewData["Title"] = "Index";
 }
 
-@using CTB.DomainModel.HappyHandingIn
-@model CTB.DomainModel.HappyHandingIn.HHIModel
+@using CTB.Model.HHI
+@model CTB.Model.HHI.HHIModel
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a>小工具</a></li>
@@ -15,7 +15,7 @@
         @foreach( var task in Model.AssignedTaskModels ) {
             @if( task.IsSubItemImage ) {
 
-        <a asp-controller="Utils_HHI" asp-action="UploadImage" asp-route-name="@task.Name" class="list-group-item list-group-item-action">
+        <a asp-controller="Utils_HHI" asp-action="Issue" asp-route-name="@task.Name" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
                 <h4 class="mb-1">@task.Name</h4>
             </div>

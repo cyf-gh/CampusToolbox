@@ -1,7 +1,7 @@
 ﻿@{ ViewData["Title"] = "UploadImage";
 }
 
-@model CTB.DomainModel.HappyHandingIn.HHIModel.AssignedTaskModel
+@model CTB.Model.HHI.HHIModel.AssignedTaskModel
 
 <script src="~/js/jquery.min.js"></script>
 
@@ -18,6 +18,7 @@
 </script>
 
 <script type="text/javascript">
+
     function doUpload() {
         var formData = new FormData();
         var cards = document.getElementById("img-card-group").childNodes;
@@ -248,7 +249,7 @@
     </div>
     <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="doUpload()">提交</button>
 </div>
-<a asp-area="" id="link-success" asp-controller="Utils_HHI" asp-action="UploadSuccessfully" hidden="hidden"></a>
+<a asp-area="" id="link-success" asp-controller="HHI" asp-action="UploadSuccessfully" hidden="hidden"></a>
 
 
 

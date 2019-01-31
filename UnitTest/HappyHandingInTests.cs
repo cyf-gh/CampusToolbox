@@ -1,20 +1,19 @@
 ﻿using System;
 using Xunit;
-using CTB.Factory.HappyHandingIn;
-using CTB.DomainModel.HappyHandingIn;
+using CTB.Service.HHI;
+using CTB.Model.HHI;
+
 /// <summary>
 /// Debug Sucks, Test Rocks.
 /// MFIF == May Fail In the Future
 /// </summary>
-namespace CTB.UnitTest {
-    public class HHIFactoryTest {
+namespace HHIService {
+    public class HHIService_Tests {
         [Fact]
-        public void Correct_HHIModel() {
+        public void Could_Get_A_Correct_HHIModel() {
             try {
-                HHIModel model = null;
-                using( HHIFactory factory = new HHIFactory() ) {
-                    model = (HHIModel)factory.Create( HHIFactory.CreateBy.DataWebsite, "https://www.cnblogs.com/PROJECT-IDOLPROGRAM/p/10335534.html" );
-                }
+                IHHIService service = new HHIServiceImpl();
+                var model = (HHIModel)service.GetHHIModel();
                 Assert.NotNull( model );
                 Assert.NotEmpty( model.AssignedTaskModels );
             } catch( Exception e ) {
@@ -23,11 +22,9 @@ namespace CTB.UnitTest {
         }
 
         [Fact]
-        public void Correct_TargetFetch() {
-            HHIModel model = null;
-            using( HHIFactory factory = new HHIFactory() ) {
-                model = (HHIModel)factory.Create( HHIFactory.CreateBy.DataWebsite, "https://www.cnblogs.com/PROJECT-IDOLPROGRAM/p/10335534.html" );
-            }
+        public void Could_Get_Correct_Data_In_HHIModel() {
+            IHHIService service = new HHIServiceImpl();
+            var model = (HHIModel)service.GetHHIModel();
             /// MFIF {
             Assert.True( model.AssignedTaskModels.Count == 2 );
             Assert.NotNull( model.GetTaskByName( "大货系统" ).Prefix );

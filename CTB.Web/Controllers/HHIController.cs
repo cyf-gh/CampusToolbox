@@ -1,27 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using CTB.DomainModel.HappyHandingIn;
-using CTB.Factory.HappyHandingIn;
+using CTB.Model.HHI;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using CTB.Service;
+using CTB.Service.HHI;
 
 namespace CTB.Web.Controllers {
     public class Utils_HHIController : Controller {
-        public IActionResult UploadImage( string name ) {
-            HHIModel model = null;
-            using( HHIFactory factory = new HHIFactory() ) {
-                model = (HHIModel)factory.Create( HHIFactory.CreateBy.DataWebsite, "https://www.cnblogs.com/PROJECT-IDOLPROGRAM/p/10335534.html" );
-            }
-            return View( model.GetTaskByName( name ) );
+        private readonly IHHIService _HHIService;
+
+        public Utils_HHIController( IHHIService HHIService ) {
+            _HHIService = HHIService;
         }
+
+        public IActionResult UploadImage( string name ) {
+            return View( ( (HHIModel)_HHIService.GetHHIModel() ).GetTaskByName( name ) );
+        }
+
         public IActionResult Index() {
-            HHIModel model = null;
-            using( HHIFactory factory = new HHIFactory() ) {
-                model = (HHIModel)factory.Create( HHIFactory.CreateBy.DataWebsite, "https://www.cnblogs.com/PROJECT-IDOLPROGRAM/p/10335534.html" );
-            }
-            return View( model );
+            return View( (HHIModel)_HHIService.GetHHIModel() );
         }
         public IActionResult UploadSuccessfully() {
 
@@ -55,7 +55,14 @@ namespace CTB.Web.Controllers {
                     imgStream.Close();
                 } catch( Exception ex ) { }
             }
-            return Ok("Successfully Uploaded!");
+            return Ok( "Successfully Uploaded!" );
+        }
+        public IActionResult Issue() {
+            Directory.GetCurrentDirectory();
+            return View();
+        }
+        public async Task<IActionResult> GetFileIssue() {
+            return Ok();
         }
     }
 }

@@ -2,18 +2,39 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
-using System.Text;
 using System.Xml;
-using CTB.DomainModel.HappyHandingIn;
-using static CTB.DomainModel.HappyHandingIn.HHIModel;
+using CTB.Model;
+using CTB.Model.HHI;
+using static CTB.Model.HHI.HHIModel;
 
-namespace CTB.Factory {
-    namespace HappyHandingIn {
+namespace CTB.Service.HHI {
+    public class HHIServiceImpl : IHHIService {
+        private readonly HHIModel _Model;
+
+        public HHIServiceImpl() {
+            using( HHIFactory factory = new HHIFactory() ) {
+                _Model = (HHIModel)factory.Create( HHIFactory.CreateBy.DataWebsite, "https://www.cnblogs.com/PROJECT-IDOLPROGRAM/p/10335534.html" );
+            }
+        }
+
+        public void Dispose() { }
+
+        public IBackModel GetHHIModel() {
+            return _Model;
+        }
+
+        public IModel GetUserModel() {
+            #region _MOCK_
+            MockModels.HHI hhi = new MockModels.HHI();
+            return hhi.GetUser_Cyf_Admin();
+            #endregion
+        }
+
         /// <summary>
         /// Last Modefied Mon, Jan 28, 2019  9:42:50 PM
         /// </summary>
         /// <see cref="HHIModel"/>
-        public class HHIFactory : IFactory {
+        private class HHIFactory : IDisposable {
             public enum CreateBy {
                 // File,
                 DataWebsite
@@ -171,8 +192,8 @@ namespace CTB.Factory {
                         ++i;
                     }
                 }
-
-                public void Dispose() { }
+                public void Dispose() {
+                }
             }
         }
     }
